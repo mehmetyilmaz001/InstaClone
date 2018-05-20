@@ -21,8 +21,9 @@ export default class Login extends Component{
     }
 
     login(){
-        // this.props.navigation.navigate("main")
-        console.log(JSON.stringify(this.state.credentials));
+
+        let credentials = this.state.credentials;
+        credentials.email = this.state.credentials.email.toLowerCase();
 
         fetch(config.baseApiUrl + 'login', {
             method: 'POST',
@@ -30,7 +31,7 @@ export default class Login extends Component{
                 Accept: 'application/json', 
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state.credentials)
+            body: JSON.stringify(credentials)
         }).then(response => response.json())
         .then(jsonResponse => {
             console.log(JSON.stringify(jsonResponse))
@@ -54,7 +55,7 @@ export default class Login extends Component{
                 }}
                  
                  >
-                <Text>Login page</Text>
+                <Text></Text>
 
                 <TextInput
                     autoCorrect={false}
@@ -71,7 +72,7 @@ export default class Login extends Component{
                     placeholder="Şifre"
                     onChangeText={(text) => this.updateText(text, 'password')}
                 />
-                <Button style={{marginTop:20}} title="Login" onPress={ () => this.login()}/>
+                <Button style={{marginTop:10}} title="Giriş" onPress={ () => this.login()}/>
                 <Button title="Kayıt ol" onPress={ () => this.props.navigation.navigate("register")}/>
             </View>
         );

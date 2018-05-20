@@ -56,7 +56,7 @@ export default class Register extends Component{
                 }}
                  
                  >
-                <Text>Register page</Text>
+                <Text></Text>
 
                 <TextInput
                     autoCorrect={false}
@@ -73,7 +73,7 @@ export default class Register extends Component{
                     placeholder="Şifre"
                     onChangeText={(text) => this.updateText(text, 'password')}
                 />
-                <Button title="Register" onPress={ () => this.register()}/>
+                <Button title="Kayıt Ol" onPress={ () => this.register()}/>
             </View>
         );
     }
