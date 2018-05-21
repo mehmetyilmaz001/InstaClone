@@ -4,7 +4,8 @@ import { MainFeed, Login,  Register, Camera, Profile } from './components/screen
 import {createSwitchNavigator, createBottomTabNavigator, createStackNavigator} from 'react-navigation'
 
 import { YellowBox } from 'react-native';
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 
+'Module RCTImageLoader', 'Class RCTCxxModule']);
 
 
 const Tabs = createBottomTabNavigator({
@@ -34,6 +35,10 @@ const MainStack = createSwitchNavigator({
 });
 
 class InstaClone extends Component{
+    constructor(props){
+        super(props);
+        this.state={}
+    }
     render(){
         return (
             <MainStack />

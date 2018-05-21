@@ -8,8 +8,8 @@ export default class Login extends Component{
         super(props);
         this.state = {
             credentials: {
-                email:'',
-                password: ''
+                email:'mehmet@mehmet.com',
+                password: '123'
             }
         }
     }
@@ -34,9 +34,13 @@ export default class Login extends Component{
             body: JSON.stringify(credentials)
         }).then(response => response.json())
         .then(jsonResponse => {
-            console.log(JSON.stringify(jsonResponse))
+            console.log(jsonResponse)
             if(jsonResponse.confirmation === "success"){
-                this.props.navigation.navigate("main")
+                this.props.navigation.navigate(
+                    {
+                        routeName: "camera", 
+                        params: {user: jsonResponse.data}
+                    })
             }else{
                 throw new Error(jsonResponse.message)
             }
