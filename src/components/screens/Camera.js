@@ -10,13 +10,12 @@ import {
 import { RNCamera } from 'react-native-camera';
 import config from '../../config'
 import Turbo from 'turbo360'
+import {connect} from 'react-redux'
 
-export default class Camera extends Component {
+class Camera extends Component {
 
   constructor(props){
     super(props);
-    this.state = {userId : '5b01ba9fda1d9b00143111a3'}
-    
   }
 
   componentDidMount(){
@@ -40,7 +39,7 @@ export default class Camera extends Component {
             onPress={this.takePicture.bind(this)}
             style = {styles.capture}
         >
-            <Text style={{fontSize: 14}}> SNAP </Text>
+            <Text style={{fontSize: 14}}> Şipşak </Text>
         </TouchableOpacity>
         </View>
       </View>
@@ -65,7 +64,7 @@ export default class Camera extends Component {
       });
     
       //insert uploaded image with user id to the image table
-      const res = await fetch(config.baseApiUrl + "users/"+this.state.userId+"/photo", {
+      const res = await fetch(config.baseApiUrl + "users/"+this.props.user.id+"/photo", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -75,10 +74,7 @@ export default class Camera extends Component {
       })
       .then(res => res.json())
       .then(jsonRespons => {
-        //send the new image object to profile screen
-         this.props.navigation.navigate("profile", {
-            newPic: jsonRespons.data
-          })
+         this.props.navigation.navigate("profile");
       })
       .catch(err => {
         alert("Hata oluştu!")
@@ -109,3 +105,17 @@ const styles = StyleSheet.create({
     margin: 20
   }
 });
+
+const stateToProps = state => {
+  return {
+      user: state.account.user
+  }
+}
+
+const dispatchToProps = dispatch => {
+  return {
+      
+  }
+}
+
+export default connect(stateToProps, dispatchToProps)(Camera)

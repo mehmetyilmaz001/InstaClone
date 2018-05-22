@@ -30,14 +30,13 @@ const IntroStact = createStackNavigator({
 });
 
 const MainStack = createSwitchNavigator({
-    intro : IntroStact,
+    intro: IntroStact,
     main: Tabs
 });
 
 class InstaClone extends Component{
     constructor(props){
         super(props);
-        this.state={}
     }
     render(){
         return (

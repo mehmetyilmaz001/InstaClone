@@ -12,6 +12,6 @@ export default{
         oneThirdWidth: (Dimensions.get("window").width) / 3
     },
 
-    //baseApiUrl: 'http://insta-clone-6kyble.turbo360-vertex.com/api/'
-    baseApiUrl: 'http://localhost:3000/api/'
+    baseApiUrl: 'http://insta-clone-6kyble.turbo360-vertex.com/api/'
+    // baseApiUrl: 'http://localhost:3000/api/'
 };
